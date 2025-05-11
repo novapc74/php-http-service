@@ -10,6 +10,9 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Exception\RequestException;
 
+/**
+ * bin/console app:test-command
+ */
 final class TestCommand
 {
     private array $headers = [
@@ -21,7 +24,7 @@ final class TestCommand
     {
         $companyCollection = DB::table('company')->findAll();
 
-        $client = new Client(['timeout'  => 10.0,]);
+        $client = new Client(['timeout' => 10.0,]);
 
         $pool = new Pool($client, $this->getRequests($companyCollection), [
             'concurrency' => 300,
